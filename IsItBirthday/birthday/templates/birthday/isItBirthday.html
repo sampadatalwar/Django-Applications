@@ -1,0 +1,20 @@
+{% load static %}  <!-- To load static fliles for this html-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Is It My Birthday</title>
+        <link rel="stylesheet" href="{% static 'birthday/styles.css' %}">       <!-- provide path of file inside static folder.
+            static keyword means Django will figure out where the static folder is-->
+    </head>
+    <body>
+        {% if birthday %} <!-- Syntax for conditions in html -->
+            <h1>YES</h1>
+
+        {% else %}
+            <h1>NO</h1>
+
+        {% endif %}
+    </body>
+    
+</html>
