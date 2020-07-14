@@ -1,0 +1,14 @@
+{% extends "Tasks/layout.html" %}
+
+{% block body%}
+
+    <h1>Add Tasks</h1>
+    <form action="{% url 'tasks:addTask'%}" method="POST">
+
+        {% csrf_token %} <!-- Django built in -->
+        <input type="text" name="task">
+        <input type="submit">
+    </form>
+    <a href="{% url 'tasks:index'%}">View Tasks</a> <!-- refers to the url of index function inside tasks application -->
+
+{% endblock %}
