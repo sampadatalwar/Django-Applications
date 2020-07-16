@@ -6,7 +6,8 @@
     <form action="{% url 'tasks:addTask'%}" method="POST">
 
         {% csrf_token %} <!-- Django built in -->
-        <input type="text" name="task">
+       <!-- <input type="text" name="task"> -->
+       {{ form }}
         <input type="submit">
     </form>
     <a href="{% url 'tasks:index'%}">View Tasks</a> <!-- refers to the url of index function inside tasks application -->
