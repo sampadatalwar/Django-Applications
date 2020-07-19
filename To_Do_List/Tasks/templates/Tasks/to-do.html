@@ -7,6 +7,8 @@
         {% for task in tasks%}
 
             <li>{{ task }}</li>
+        {% empty %}         <!--If list is empty-->
+            <li>Your To do list is empty. Go ahead and add some tasks.</li>
 
         {% endfor %}  
     </ul>
