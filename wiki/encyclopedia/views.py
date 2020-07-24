@@ -1,9 +1,15 @@
 from django.shortcuts import render
 import markdown2
 from markdown2 import Markdown
-import markdown2
+from django import forms
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 from . import util
+
+class NewPageForm(forms.Form):
+    title = forms.CharField(label = "Title")
+    content = forms.CharField(label = "Content")
 
 
 def index(request):
@@ -16,4 +22,30 @@ def entryPage(request, title):
     return render(request,"encyclopedia/entryPage.html",{
         "content": markdowner.convert(util.get_entry(title))    # Converting markdown into html format before passing into template.
     })
+
+def createNewPage(request):
+    return render(request, "encyclopedia/newPage.html",{
+        "form" : NewPageForm()
+    })
+
+def createPage(request):
+    if request.method  == "POST":
+        form = NewPageForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data["title"]
+            content = form.cleaned_data["content"]
+            util.save_entry(title, content)
+            return HttpResponseRedirect(reverse("index"))
+
+    else:
+        return render(request, "encyclopedia/createPage.html",{
+        "form" : NewPageForm()
+        })
+    return render(request, "encyclopedia/createPage.html",{
+        "form" : NewPageForm()
+    })
+
+def test(request):
+    return render(request, "encyclopedia/test.html")
+
 
