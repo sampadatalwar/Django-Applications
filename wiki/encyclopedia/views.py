@@ -9,7 +9,7 @@ from . import util
 
 class NewPageForm(forms.Form):
     title = forms.CharField(label = "Title")
-    content = forms.CharField(label = "Content")
+    content = forms.CharField(label = "Content",widget=forms.Textarea(attrs={'rows':5, 'cols':10}))
 
 
 def index(request):
