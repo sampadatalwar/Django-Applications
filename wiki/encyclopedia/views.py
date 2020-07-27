@@ -9,7 +9,15 @@ from . import util
 
 class NewPageForm(forms.Form):
     title = forms.CharField(label = "Title")
-    content = forms.CharField(label = "Content",widget=forms.Textarea(attrs={'rows':5, 'cols':10}))
+    content = forms.CharField(
+        label = "Content",
+        widget=forms.Textarea(
+            attrs={
+                "rows":10, 
+                "cols":40
+                }
+        )
+    )
 
 
 def index(request):
@@ -44,6 +52,10 @@ def createPage(request):
     return render(request, "encyclopedia/createPage.html",{
         "form" : NewPageForm()
     })
+"""
+def search(request, string):
+"""    
+
 
 def test(request):
     return render(request, "encyclopedia/test.html")
