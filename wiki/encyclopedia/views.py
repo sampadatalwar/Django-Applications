@@ -5,6 +5,7 @@ from django import forms
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 import random
+from django.db.models import Q
 
 from . import util
 
@@ -102,12 +103,18 @@ def randomPage(request):
     entry = random.choice(util.list_entries())
     return entryPage(request,entry)
 
-"""
-def search(request, string):
-"""    
 
+def search(request):
 
-def test(request):
-    return render(request, "encyclopedia/test.html")
+    string = request.GET.get('q')
+    entries = util.list_entries()
+    results = []
+    for e in entries:
+        if (string.lower() in e.lower()):
+            results.append(e)
+
+    return render(request, "encyclopedia/index.html", {
+        "entries": results
+    })
 
 
