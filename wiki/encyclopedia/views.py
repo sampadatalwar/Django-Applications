@@ -43,12 +43,6 @@ def entryPage(request, title):
         "title" : title,
         "content": markdowner.convert(util.get_entry(title))    # Converting markdown into html format before passing into template.
     })
-"""
-def createNewPage(request):
-    return render(request, "encyclopedia/newPage.html",{
-        "form" : NewPageForm()
-    })
-"""
 
 def createPage(request):
     if request.method  == "POST":

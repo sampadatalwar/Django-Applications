@@ -4,7 +4,6 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    #path("NewPage", views.createNewPage, name="newPage"),
     path("CreatePage", views.createPage, name="createPage"),
     path("EditPage/<str:title>", views.editPage, name= "editPage"),
     path("SaveEditedPage", views.saveEditedPage, name="saveEditedPage"),
@@ -13,3 +12,5 @@ urlpatterns = [
     path("<str:title>", views.entryPage, name="entryPage")
     
 ]
+
+# The Path/ and name of path must be same as the function name in views.py
