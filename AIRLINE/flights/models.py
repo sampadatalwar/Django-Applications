@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+#subclass of Model
 class Airport(models.Model):
     city = models.CharField(max_length = 64)
     code = models.CharField(max_length = 3)
